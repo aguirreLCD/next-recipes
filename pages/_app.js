@@ -1,26 +1,19 @@
 // import '../styles/globals.css'
-import Nav from '../components/Nav'
+import NavRecipe from "../components/NavRecipe";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import SSRProvider from 'react-bootstrap/SSRProvider';
-
+import SSRProvider from "react-bootstrap/SSRProvider";
 
 function MyApp({ Component, pageProps }) {
   return (
-
     <>
-
+      <NavRecipe />
       <SSRProvider>
-
-          <Nav />
-          <Component {...pageProps} />
-          
+        <Component {...pageProps} />
       </SSRProvider>
     </>
-  )
-
-  
+  );
 }
 
-export default MyApp
+export default MyApp;

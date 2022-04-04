@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Container, Row, Card, Col, Button } from "react-bootstrap";
+import { Container, Row, Card, Col } from "react-bootstrap";
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
@@ -43,32 +43,33 @@ export default function Veggie() {
 
   return (
     <>
-     
       <Container fluid>
-        <Row>
-          <Col>
-            <h1>Veggie Picks</h1>
-          </Col>
+        <Container fluid>
+          <Row className="justify-content-md-center">
+            <Col md="auto">
+              <h2>Veggie Picks</h2>
+            </Col>
+          </Row>
+        </Container>
+
+        <Row xs={1} md={3} className="g-4">
+          {veggie.map((recipe) => (
+            <Col key={recipe.id}>
+              <Card>
+                <Card.Img variant="top" src={recipe.image} alt={recipe.title} />
+                <Card.Body>
+                  <Card.Title>{recipe.title}</Card.Title>
+                  <Card.Text>
+                    This is a longer card with supporting text below as a
+                    natural lead-in to additional content. This content is a
+                    little bit longer.
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
         </Row>
-
-      <Row xs={1} md={3} className="g-4">
-      {veggie.map((recipe) => (
-        <Col key={recipe.id}>
-          <Card>
-            <Card.Img variant="top" src={recipe.image} alt={recipe.title}/>
-            <Card.Body>
-              <Card.Title>{recipe.title}</Card.Title>
-              <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit longer.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      ))}
-    </Row>
-
-    </Container>
+      </Container>
     </>
   );
 }

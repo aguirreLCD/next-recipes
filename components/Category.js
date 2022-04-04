@@ -7,77 +7,76 @@ import { GiNoodles, GiChopsticks } from "react-icons/gi";
 
 import Link from "next/link";
 
-import { Container  } from "react-bootstrap";
-
+import { Container, Stack } from "react-bootstrap";
 
 function Category() {
-    return (
-        <>
-        <Container>
-
-
-            
-            <div className={styles.grid}>
-
-  
-            <Link 
-                href={{
-                    pathname: '/[slug]',
-                    query: { slug: 'Italian' }
-                }}
-                passHref>
-            <div className={styles.card}>
+  return (
+    <>
+      <Container fluid="md">
+        <Stack direction="horizontal" gap={2} className="col-md-5 mx-auto">
+          <div className="bg-light border">
+            <Link
+              href={{
+                pathname: "/[slug]",
+                query: { slug: "Italian" },
+              }}
+              passHref
+            >
+              <div className={styles.card}>
                 <FaPizzaSlice />
                 <a>Italian</a>
-
-            </div>
+              </div>
             </Link>
+          </div>
 
-
-            <Link 
-               href={{
-                    pathname: '/[slug]',
-                    query: { slug: 'American' }
-                }}
-                passHref
+          <div className="bg-light border">
+            <Link
+              href={{
+                pathname: "/[slug]",
+                query: { slug: "American" },
+              }}
+              passHref
             >
-            
-            <div className={styles.card}>
+              <div className={styles.card}>
                 <FaHamburger />
                 <a>American</a>
-            </div>
+              </div>
             </Link>
+          </div>
 
-            
-            <Link   
-                href={{
-                    pathname: '/[slug]',
-                    query: { slug: 'Thai' }
-                }}
-                passHref>
-            <div className={styles.card}>
+          <div className="bg-light border">
+            <Link
+              href={{
+                pathname: "/[slug]",
+                query: { slug: "Thai" },
+              }}
+              passHref
+            >
+              <div className={styles.card}>
                 <GiNoodles />
                 <a>Thai</a>
-            </div>
+              </div>
             </Link>
+          </div>
 
-
-            <Link 
-               href={{
-                    pathname: '/[slug]',
-                    query: { slug: 'Japanese' }
-                }}
-                passHref>
-            <div className={styles.card}>
+          <div className="bg-light border">
+            <Link
+              href={{
+                pathname: "/[slug]",
+                query: { slug: "Japanese" },
+              }}
+              passHref
+            >
+              <div className={styles.card}>
                 <GiChopsticks />
                 <a>Japanese</a>
-            </div>
+              </div>
             </Link>
-</div>
-          </Container>
-          </>
-    )
-    
+          </div>
+        </Stack>
+      </Container>
+    </>
+  );
 }
 
 export default Category;

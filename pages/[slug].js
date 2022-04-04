@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import { Container, Row, Card, Col, Button } from "react-bootstrap";
 
-
 import { useRouter } from "next/router";
 import Category from "../components/Category";
 
@@ -41,7 +40,10 @@ function Cuisine() {
 
         const recipes = await data.json();
 
-        localStorage.setItem(`${router.query.slug}`, JSON.stringify(recipes.results));
+        localStorage.setItem(
+          `${router.query.slug}`,
+          JSON.stringify(recipes.results)
+        );
 
         console.log(recipes);
 
@@ -54,41 +56,40 @@ function Cuisine() {
 
   useEffect(() => {
     getCuisine();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-    return (
-      <>
-
-
-
+  return (
+    <>
       <Container fluid>
-        <Row>
-          <Col>
-            <h1></h1>
-          </Col>
+        <Container fluid>
+          <Row className="justify-content-md-center">
+            <Col md="auto">
+              <h2>{router.query.slug} Cuisine</h2>
+            </Col>
+          </Row>
+        </Container>
+
+        <Row xs={1} md={3} className="g-4">
+          {cuisine.map((item) => (
+            <Col key={item.id}>
+              <Card>
+                <Card.Img variant="top" src={item.image} alt={item.title} />
+                <Card.Body>
+                  <Card.Title>{item.title}</Card.Title>
+                  <Card.Text>
+                    This is a longer card with supporting text below as a
+                    natural lead-in to additional content. This content is a
+                    little bit longer.
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
         </Row>
-
-      <Row xs={1} md={3} className="g-4">
-      {cuisine.map((item) => (
-        <Col key={item.id}>
-          <Card>
-            <Card.Img variant="top" src={item.image} alt={item.title}/>
-            <Card.Body>
-              <Card.Title>{item.title}</Card.Title>
-              <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit longer.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      ))}
-    </Row>
-
-    </Container>
-      </>
-    );
-  };
-
+      </Container>
+    </>
+  );
+}
 
 export default Cuisine;

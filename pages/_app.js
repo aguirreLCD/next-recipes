@@ -8,8 +8,8 @@ import SSRProvider from "react-bootstrap/SSRProvider";
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <NavRecipe />
       <SSRProvider>
+        <NavRecipe />
         <Component {...pageProps} />
       </SSRProvider>
     </>

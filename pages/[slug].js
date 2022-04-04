@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Card, Col, Button } from "react-bootstrap";
 
 import { useRouter } from "next/router";
-import Category from "../components/Category";
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 

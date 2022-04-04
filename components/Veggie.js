@@ -1,6 +1,9 @@
+/* eslint-disable @next/next/link-passhref */
 import React, { useEffect, useState } from "react";
 
 import { Container, Row, Card, Col } from "react-bootstrap";
+
+import Link from "next/link";
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
@@ -55,17 +58,30 @@ export default function Veggie() {
         <Row xs={1} md={3} className="g-4">
           {veggie.map((recipe) => (
             <Col key={recipe.id}>
-              <Card>
-                <Card.Img variant="top" src={recipe.image} alt={recipe.title} />
-                <Card.Body>
-                  <Card.Title>{recipe.title}</Card.Title>
-                  <Card.Text>
-                    This is a longer card with supporting text below as a
-                    natural lead-in to additional content. This content is a
-                    little bit longer.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
+              <Link
+                href={{
+                  pathname: "/recipedetails/",
+                  query: { recipeid: `${recipe.id}` },
+                }}
+                passHref
+              >
+                <Card>
+                  <Card.Img
+                    variant="top"
+                    src={recipe.image}
+                    alt={recipe.title}
+                  />
+                  <Card.Body>
+                    <Card.Title>{recipe.title}</Card.Title>
+
+                    <Card.Text>
+                      This is a longer card with supporting text below as a
+                      natural lead-in to additional content. This content is a
+                      little bit longer.
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Link>
             </Col>
           ))}
         </Row>

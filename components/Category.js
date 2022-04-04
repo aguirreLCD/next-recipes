@@ -7,10 +7,19 @@ import { GiNoodles, GiChopsticks } from "react-icons/gi";
 
 import Link from "next/link";
 
+import { Container  } from "react-bootstrap";
+
+
 function Category() {
     return (
-        <div className={styles.grid}>
+        <>
+        <Container>
 
+
+            
+            <div className={styles.grid}>
+
+  
             <Link 
                 href={{
                     pathname: '/[slug]',
@@ -35,7 +44,7 @@ function Category() {
             
             <div className={styles.card}>
                 <FaHamburger />
-                <h4>American</h4>
+                <a>American</a>
             </div>
             </Link>
 
@@ -48,7 +57,7 @@ function Category() {
                 passHref>
             <div className={styles.card}>
                 <GiNoodles />
-                <h4>Thai</h4>
+                <a>Thai</a>
             </div>
             </Link>
 
@@ -61,11 +70,12 @@ function Category() {
                 passHref>
             <div className={styles.card}>
                 <GiChopsticks />
-                <h4>Japanese</h4>
+                <a>Japanese</a>
             </div>
             </Link>
-
-        </div>
+</div>
+          </Container>
+          </>
     )
     
 }

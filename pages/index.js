@@ -5,6 +5,7 @@ import Veggie from '../components/Veggie';
 import Popular from '../components/Popular';
 import Category from '../components/Category';
 
+import Image from 'next/image';
 
 
 export default function Home() {

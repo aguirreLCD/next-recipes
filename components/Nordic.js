@@ -21,7 +21,7 @@ export default function Nordic() {
     } else {
       if (typeof window !== "undefined") {
         const api = await fetch(
-          `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=5&cuisine=nordic`
+          `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=6&cuisine=nordic`
         );
 
         const data = await api.json();

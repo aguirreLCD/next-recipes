@@ -19,7 +19,7 @@ function SearchRecipe() {
 
   return (
     <>
-      <div>
+      {/* <div>
         <input
           type="text"
           value={keyword}
@@ -32,25 +32,22 @@ function SearchRecipe() {
         <button type="submit" onClick={submitHandler}>
           Search
         </button>
-      </div>
+      </div> */}
 
-      {/* <Form className="d-flex">
+      <Form className="d-flex">
         <FormControl
-          type="search"
+          type="text"
+          value={keyword}
           placeholder="Search"
-          className="me-2"
-          aria-label="Search"
           onChange={(e) => {
             e.preventDefault();
             setKeyword(e.target.value);
-            console.log(keyword);
           }}
-          value={keyword}
         />
-        <Button variant="primary" type="submit" onSubmit={submitHandler}>
+        <Button variant="dark" type="submit" onClick={submitHandler}>
           search
         </Button>
-      </Form> */}
+      </Form>
     </>
   );
 }

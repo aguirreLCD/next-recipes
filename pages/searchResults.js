@@ -48,7 +48,7 @@ function SearchResults() {
         <Container fluid>
           <Row className="justify-content-md-center">
             <Col md="auto">
-              <h2>Searched Recipes</h2>
+              <h2>{keywordToSearch} recipes</h2>
             </Col>
           </Row>
         </Container>

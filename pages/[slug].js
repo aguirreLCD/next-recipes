@@ -36,7 +36,7 @@ function Cuisine() {
     } else {
       if (typeof window !== "undefined") {
         const data = await fetch(
-          `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=5&cuisine=${router.query.slug}`
+          `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=6&cuisine=${router.query.slug}`
         );
 
         const recipes = await data.json();

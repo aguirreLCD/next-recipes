@@ -22,7 +22,7 @@ export default function Veggie() {
     } else {
       if (typeof window !== "undefined") {
         const api = await fetch(
-          `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=5&tags=vegetarian`
+          `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=6&tags=vegetarian`
         );
 
         const data = await api.json();
@@ -74,11 +74,7 @@ export default function Veggie() {
                   <Card.Body>
                     <Card.Title>{recipe.title}</Card.Title>
 
-                    <Card.Text>
-                      This is a longer card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </Card.Text>
+                    <Card.Text></Card.Text>
                   </Card.Body>
                 </Card>
               </Link>

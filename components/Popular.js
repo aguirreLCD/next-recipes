@@ -21,7 +21,7 @@ export default function Popular() {
     } else {
       if (typeof window !== "undefined") {
         const api = await fetch(
-          `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=5`
+          `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=6`
         );
 
         const data = await api.json();

@@ -88,16 +88,7 @@ function RecipeDetails() {
               </Button>
 
               {activeTab === "instructions" && (
-                <Card.Text>
-                  <p
-                    dangerouslySetInnerHTML={{ __html: recipeDetails.summary }}
-                  ></p>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: recipeDetails.instructions,
-                    }}
-                  ></p>
-                </Card.Text>
+                <Card.Text>{recipeDetails.instructions}</Card.Text>
               )}
 
               {activeTab === "ingredients" && (

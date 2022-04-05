@@ -59,12 +59,6 @@ function RecipeDetails() {
     <Container fluid>
       <h2>{recipeDetails.title}</h2>
 
-      {/* <Image
-        src={recipeDetails.image}
-        alt={recipeDetails.title}
-        layout="fill"
-      /> */}
-
       <Row xs={1} md={3} className="g-4">
         <Col key={recipeDetails.id}>
           <Card>

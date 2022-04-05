@@ -31,12 +31,12 @@ function NavRecipe() {
               navbarScroll
             >
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="#action2">Link</Nav.Link>
+              <Nav.Link href="/">Italian</Nav.Link>
+
               <NavDropdown title="Link" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">
-                  Another action
-                </NavDropdown.Item>
+                <NavDropdown.Item href="#action3">Italian</NavDropdown.Item>
+
+                <NavDropdown.Item href="#action4">American</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action5">
                   Something else here
@@ -47,7 +47,7 @@ function NavRecipe() {
               </Nav.Link>
             </Nav>
 
-            {/* <SearchRecipe></SearchRecipe> */}
+            <SearchRecipe></SearchRecipe>
           </Navbar.Collapse>
         </Container>
       </Navbar>

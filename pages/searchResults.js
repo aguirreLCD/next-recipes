@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 import { Container, Row, Card, Col } from "react-bootstrap";
@@ -6,40 +7,40 @@ import Link from "next/link";
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
-export default function Popular() {
-  const [popular, setPopular] = useState([]);
-  console.log(popular);
+function SearchResults() {
+  const router = useRouter();
+  const keywordToSearch = router.query.keyword;
+  console.log(router.query.keyword);
+  console.log(keywordToSearch);
 
-  const getPopular = async () => {
-    const check = localStorage.getItem("popular");
-    console.log(JSON.parse(check));
+  const [searchedRecipes, setSearchedRecipes] = useState([]);
+
+  const getSearched = async (keywordToSearch) => {
+    const check = localStorage.getItem(`${keywordToSearch}`);
 
     if (check) {
-      console.log(JSON.parse(check));
-      // console.log(check);
-      setPopular(JSON.parse(check));
+      setSearchedRecipes(JSON.parse(check));
     } else {
-      if (typeof window !== "undefined") {
-        const api = await fetch(
-          `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=5`
-        );
+      const data = await fetch(
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=6&query=${keywordToSearch}`
+      );
+      const recipesSearched = await data.json();
 
-        const data = await api.json();
-
-        localStorage.setItem("popular", JSON.stringify(data.recipes));
-
-        console.log(data);
-
-        setPopular(data.recipes);
-
-        console.log(data.recipes);
-      }
+      localStorage.setItem(
+        `${keywordToSearch}`,
+        JSON.stringify(recipesSearched.results)
+      );
+      console.log(recipesSearched);
+      setSearchedRecipes(recipesSearched.results);
+      console.log(recipesSearched.results);
     }
   };
 
   useEffect(() => {
-    getPopular();
-  }, []);
+    getSearched(keywordToSearch);
+  }, [keywordToSearch]);
+
+  console.log(searchedRecipes);
 
   return (
     <>
@@ -47,13 +48,13 @@ export default function Popular() {
         <Container fluid>
           <Row className="justify-content-md-center">
             <Col md="auto">
-              <h2>Popular Picks</h2>
+              <h2>Searched Recipes</h2>
             </Col>
           </Row>
         </Container>
 
         <Row xs={1} md={3} className="g-4">
-          {popular.map((recipe) => (
+          {searchedRecipes.map((recipe) => (
             <Col key={recipe.id}>
               <Link
                 href={{
@@ -70,6 +71,7 @@ export default function Popular() {
                   />
                   <Card.Body>
                     <Card.Title>{recipe.title}</Card.Title>
+
                     <Card.Text></Card.Text>
                   </Card.Body>
                 </Card>
@@ -81,3 +83,5 @@ export default function Popular() {
     </>
   );
 }
+
+export default SearchResults;

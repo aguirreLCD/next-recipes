@@ -1,42 +1,55 @@
-// import React, { useState } from "react";
+import React, { useState } from "react";
 
-// import Form from "react-bootstrap/Form";
-// import FormControl from "react-bootstrap/FormControl";
+import Form from "react-bootstrap/Form";
+import FormControl from "react-bootstrap/FormControl";
 
-// import Button from "react-bootstrap/Button";
+import Button from "react-bootstrap/Button";
+import { useRouter } from "next/router";
 
-// function SearchRecipe() {
-//   const [input, setInput] = useState("");
-//   console.log(input);
+function SearchRecipe() {
+  const router = useRouter();
+  const [keyword, setKeyword] = useState("");
+  console.log(keyword);
 
-//   function submitHandler(event) {
-//     event.preventDefault();
-//     console.log(input);
-//     setInput(input);
-//     console.log(input);
-//   }
+  function submitHandler(event) {
+    event.preventDefault();
 
-//   return (
-//     <>
-//       <Form className="d-flex">
-//         <FormControl
-//           type="search"
-//           placeholder="Search"
-//           className="me-2"
-//           aria-label="Search"
-//           onChange={(e) => {
-//             e.preventDefault();
-//             setInput(e.target.value);
-//             console.log(input);
-//           }}
-//           value={input}
-//         />
-//         <Button variant="primary" type="submit" onSubmit={submitHandler}>
-//           search
-//         </Button>
-//       </Form>
-//     </>
-//   );
-// }
+    router.push(`/searchResults?keyword=${keyword}`);
+  }
 
-// export default SearchRecipe;
+  return (
+    <>
+      <div>
+        <input
+          type="text"
+          value={keyword}
+          placeholder="Search"
+          onChange={(e) => setKeyword(e.target.value)}
+        ></input>
+        <button type="submit" onClick={submitHandler}>
+          Search
+        </button>
+      </div>
+
+      {/* <Form className="d-flex">
+        <FormControl
+          type="search"
+          placeholder="Search"
+          className="me-2"
+          aria-label="Search"
+          onChange={(e) => {
+            e.preventDefault();
+            setKeyword(e.target.value);
+            console.log(keyword);
+          }}
+          value={keyword}
+        />
+        <Button variant="primary" type="submit" onSubmit={submitHandler}>
+          search
+        </Button>
+      </Form> */}
+    </>
+  );
+}
+
+export default SearchRecipe;

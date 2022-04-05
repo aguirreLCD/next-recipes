@@ -12,7 +12,7 @@ import { Container, Stack } from "react-bootstrap";
 function Category() {
   return (
     <>
-      <Container fluid="md">
+      <Container fluid="sm">
         <Stack direction="horizontal" gap={2} className="col-md-5 mx-auto">
           <div className="bg-light border">
             <Link

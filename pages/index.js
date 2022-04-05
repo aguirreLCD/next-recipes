@@ -7,6 +7,7 @@ import Category from "../components/Category";
 
 import Image from "next/image";
 import { Container } from "react-bootstrap";
+import Nordic from "../components/Nordic";
 
 export default function Home() {
   return (
@@ -21,6 +22,8 @@ export default function Home() {
         </Container>
 
         <Category></Category>
+
+        <Nordic></Nordic>
 
         <Veggie></Veggie>
 

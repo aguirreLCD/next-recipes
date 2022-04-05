@@ -24,7 +24,10 @@ function SearchRecipe() {
           type="text"
           value={keyword}
           placeholder="Search"
-          onChange={(e) => setKeyword(e.target.value)}
+          onChange={(e) => {
+            e.preventDefault();
+            setKeyword(e.target.value);
+          }}
         ></input>
         <button type="submit" onClick={submitHandler}>
           Search

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Card, Col, Button } from "react-bootstrap";
 
 import { useRouter } from "next/router";
+import styles from "../styles/Category.module.css";
 
 import Link from "next/link";
 
@@ -66,7 +67,7 @@ function Cuisine() {
         <Container fluid>
           <Row className="justify-content-md-center">
             <Col md="auto">
-              <h2>{router.query.slug} Cuisine</h2>
+              <h2 className={styles.title}>{router.query.slug} Cuisine</h2>
             </Col>
           </Row>
         </Container>

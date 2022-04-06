@@ -4,6 +4,8 @@ import { Container, Row, Card, Col } from "react-bootstrap";
 
 import Link from "next/link";
 
+import styles from "../styles/Category.module.css";
+
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 export default function Nordic() {
@@ -49,7 +51,7 @@ export default function Nordic() {
         <Container fluid>
           <Row className="justify-content-md-center">
             <Col md="auto">
-              <h2>Nordic Picks</h2>
+              <h2 className={styles.title}>Nordic Picks</h2>
             </Col>
           </Row>
         </Container>
@@ -64,7 +66,7 @@ export default function Nordic() {
                 }}
                 passHref
               >
-                <Card>
+                <Card className={styles.nordic}>
                   <Card.Img
                     variant="top"
                     src={recipe.image}

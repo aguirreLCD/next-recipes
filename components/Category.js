@@ -14,7 +14,7 @@ function Category() {
     <>
       <Container fluid="md">
         <Stack direction="horizontal" gap={2} className="col-md-5 mx-auto">
-          <div className="bg-light border">
+          <div>
             <Link
               href={{
                 pathname: "/[slug]",
@@ -29,7 +29,7 @@ function Category() {
             </Link>
           </div>
 
-          <div className="bg-light border">
+          <div>
             <Link
               href={{
                 pathname: "/[slug]",
@@ -44,7 +44,7 @@ function Category() {
             </Link>
           </div>
 
-          <div className="bg-light border">
+          <div>
             <Link
               href={{
                 pathname: "/[slug]",
@@ -59,7 +59,7 @@ function Category() {
             </Link>
           </div>
 
-          <div className="bg-light border">
+          <div>
             <Link
               href={{
                 pathname: "/[slug]",

@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import styles from "../styles/Category.module.css";
 
 import { Container, Row, Card, Col } from "react-bootstrap";
 
@@ -48,7 +49,7 @@ function SearchResults() {
         <Container fluid>
           <Row className="justify-content-md-center">
             <Col md="auto">
-              <h2>{keywordToSearch} recipes</h2>
+              <h2 className={styles.title}>{keywordToSearch} recipes</h2>
             </Col>
           </Row>
         </Container>

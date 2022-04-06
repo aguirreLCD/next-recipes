@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container, Card, Row, Col } from "react-bootstrap";
+import styles from "../styles/Category.module.css";
 
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -19,6 +20,7 @@ function RecipeDetails() {
   //   console.log(router.components);
   const [recipeDetails, setRecipeDetails] = useState([]);
   const [activeTab, setActiveTab] = useState("instructions");
+  const [stepsForInstructions, setStepsForInstructions] = useState({});
 
   const fetchRecipeDetails = async () => {
     const check = localStorage.getItem(`${router.query.recipeid}`);
@@ -28,6 +30,7 @@ function RecipeDetails() {
       console.log(JSON.parse(check));
       // console.log(check);
       setRecipeDetails(JSON.parse(check));
+      setStepsForInstructions(JSON.parse(check));
     } else {
       if (typeof window !== "undefined") {
         const data = await fetch(
@@ -45,7 +48,11 @@ function RecipeDetails() {
 
         setRecipeDetails(detailsData);
 
-        console.log(detailsData);
+        // console.log(JSON.parse(instructions, detailsData.analyzedInstructions));
+        console.log(JSON.stringify(detailsData.analyzedInstructions));
+        setStepsForInstructions(
+          JSON.stringify(detailsData.analyzedInstructions)
+        );
       }
     }
   };
@@ -55,54 +62,81 @@ function RecipeDetails() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  console.log(JSON.stringify(recipeDetails.analyzedInstructions));
+  // console.log(stepsForInstructions);
+  console.log(JSON.stringify(stepsForInstructions.analyzedInstructions));
+
   return (
-    <Container fluid>
-      <h2>{recipeDetails.title}</h2>
+    <>
+      {/* <div>{JSON.stringify(stepsForInstructions.analyzedInstructions)}</div> */}
+      {/* <div>{JSON.stringify({ stepsForInstructions })}</div> */}
+      {/* <div>{JSON.stringify(stepsForInstructions.analyzedInstructions)}</div> */}
+      {/* <div>
+        {JSON.stringify(
+          { stepsForInstructions: stepsForInstructions.analyzedInstructions },
+          null,
+          ""
+        )}
+      </div> */}
 
-      <Row xs={1} md={3} className="g-4">
-        <Col key={recipeDetails.id}>
-          <Card>
-            <Card.Img
-              variant="top"
-              src={recipeDetails.image}
-              alt={recipeDetails.title}
-            />
-            <Card.Body>
-              <Card.Title>{recipeDetails.title}</Card.Title>
-              <Card.Text>
-                Ready in {recipeDetails.readyInMinutes} minutes
-              </Card.Text>
+      {/* <div>{JSON.stringify(stepsForInstructions.instructions, "\t")}</div> */}
+      {/* <div>{JSON.stringify(stepsForInstructions.instructions, null, "\t")}</div> */}
+      {/* <div>{JSON.parse(stepsForInstructions)}</div> */}
 
-              <Button
-                className={activeTab === "instructions" ? "active" : ""}
-                onClick={() => setActiveTab("instructions")}
-              >
-                Instructions
-              </Button>
+      <Container fluid>
+        <h2 className={styles.title}>{recipeDetails.title}</h2>
 
-              <Button
-                className={activeTab === "ingredients" ? "active" : ""}
-                onClick={() => setActiveTab("ingredients")}
-              >
-                Ingredients
-              </Button>
+        <Row xs={1} md={3} className="g-4">
+          <Col key={recipeDetails.id}>
+            <Card className={styles.recipedetails}>
+              <Card.Img
+                variant="top"
+                src={recipeDetails.image}
+                alt={recipeDetails.title}
+              />
+              <Card.Body>
+                <Card.Title>{recipeDetails.title}</Card.Title>
+                <Card.Text>
+                  Ready in {recipeDetails.readyInMinutes} minutes
+                </Card.Text>
 
-              {activeTab === "instructions" && (
-                <Card.Text>{recipeDetails.instructions}</Card.Text>
-              )}
+                <Button
+                  variant="danger"
+                  className={activeTab === "instructions" ? "active" : ""}
+                  onClick={() => setActiveTab("instructions")}
+                >
+                  Instructions
+                </Button>
 
-              {activeTab === "ingredients" && (
-                <ul>
-                  {recipeDetails.extendedIngredients.map((ingredient) => (
-                    <li key={ingredient.id}>{ingredient.original}</li>
-                  ))}
-                </ul>
-              )}
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+                <Button
+                  variant="dark"
+                  className={activeTab === "ingredients" ? "active" : ""}
+                  onClick={() => setActiveTab("ingredients")}
+                >
+                  Ingredients
+                </Button>
+
+                {activeTab === "instructions" && (
+                  <Card.Text>
+                    Instructions:
+                    {JSON.stringify(recipeDetails?.instructions)}
+                    Sumary:
+                    {JSON.stringify(recipeDetails?.summary)}
+                  </Card.Text>
+                )}
+                {activeTab === "ingredients" && (
+                  <ul>
+                    {recipeDetails.extendedIngredients.map((ingredient) => (
+                      <li key={ingredient.id}>{ingredient.original}</li>
+                    ))}
+                  </ul>
+                )}
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }
 

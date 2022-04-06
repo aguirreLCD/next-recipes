@@ -64,8 +64,10 @@ function SearchResults() {
                 }}
                 passHref
               >
-                <Card>
+                <Card className={styles.category}>
                   <Card.Img
+                    className={styles.category}
+                    layout="fill"
                     variant="top"
                     src={recipe.image}
                     alt={recipe.title}

@@ -66,14 +66,18 @@ export default function Nordic() {
                 }}
                 passHref
               >
-                <Card className={styles.nordic}>
+                <Card className={styles.category}>
                   <Card.Img
+                    className={styles.category}
+                    layout="fill"
                     variant="top"
                     src={recipe.image}
                     alt={recipe.title}
                   />
-                  <Card.Body>
-                    <Card.Title>{recipe.title}</Card.Title>
+                  <Card.Body className={styles.categorycard}>
+                    <Card.Title className={styles.categorytitle}>
+                      {recipe.title}
+                    </Card.Title>
 
                     <Card.Text></Card.Text>
                   </Card.Body>

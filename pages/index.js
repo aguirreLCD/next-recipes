@@ -21,13 +21,21 @@ export default function Home() {
           </Head>
         </Container>
 
-        <Category></Category>
+        <Container>
+          <Category></Category>
+        </Container>
 
-        <Nordic></Nordic>
+        <Container>
+          <Veggie></Veggie>
+        </Container>
 
-        <Veggie></Veggie>
+        <Container>
+          <Popular></Popular>
+        </Container>
 
-        <Popular></Popular>
+        <Container>
+          <Nordic></Nordic>
+        </Container>
       </Container>
     </>
   );

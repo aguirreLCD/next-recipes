@@ -63,8 +63,8 @@ function Cuisine() {
 
   return (
     <>
-      <Container fluid>
-        <Container fluid>
+      <Container>
+        <Container>
           <Row className="justify-content-md-center">
             <Col md="auto">
               <h2 className={styles.title}>{router.query.slug} Cuisine</h2>
@@ -82,10 +82,18 @@ function Cuisine() {
                 }}
                 passHref
               >
-                <Card>
-                  <Card.Img variant="top" src={item.image} alt={item.title} />
-                  <Card.Body>
-                    <Card.Title>{item.title}</Card.Title>
+                <Card className={styles.category}>
+                  <Card.Img
+                    className={styles.category}
+                    layout="fill"
+                    variant="top"
+                    src={item.image}
+                    alt={item.title}
+                  />
+                  <Card.Body className={styles.categorycard}>
+                    <Card.Title className={styles.categorytitle}>
+                      {item.title}
+                    </Card.Title>
                     <Card.Text></Card.Text>
                   </Card.Body>
                 </Card>

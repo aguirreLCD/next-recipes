@@ -83,13 +83,14 @@ function RecipeDetails() {
       {/* <div>{JSON.stringify(stepsForInstructions.instructions, null, "\t")}</div> */}
       {/* <div>{JSON.parse(stepsForInstructions)}</div> */}
 
-      <Container fluid>
+      <Container>
         <h2 className={styles.title}>{recipeDetails.title}</h2>
 
         <Row xs={1} md={3} className="g-4">
           <Col key={recipeDetails.id}>
             <Card className={styles.recipedetails}>
               <Card.Img
+                layout="fill"
                 variant="top"
                 src={recipeDetails.image}
                 alt={recipeDetails.title}

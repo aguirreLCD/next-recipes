@@ -45,60 +45,65 @@ export default function Popular() {
 
   return (
     <>
-      <Container fluid>
-        {/* <Row className="justify-content-md-center">
+      {/* <Row className="justify-content-md-center">
           <Col md="auto">
             <h2 className={styles.title}>Popular Picks</h2>
           </Col>
         </Row> */}
 
-        <Card
-          className="text-center"
-          // border="danger"
-          bg="dark"
-          // styles={{ height: "5rem" }}
-          text="danger"
-        >
-          <Card.Title className="justify-content-md-center">
-            Popular Picks
-          </Card.Title>
-        </Card>
+      <Card
+        className="text-center"
+        bg="dark"
+        style={{
+          padding: "1rem",
+          margin: "1rem",
+          borderRadius: "25px",
+          // backgroundColor: "gray",
+        }}
+        text="danger"
+      >
+        <Card.Title className="justify-content-md-center">
+          Popular Picks
+        </Card.Title>
+      </Card>
 
-        <Row xs={1} md={3} className="g-4">
-          {popular.map((recipe) => (
-            <Col key={recipe.id}>
-              <Link
-                href={{
-                  pathname: "/recipedetails/",
-                  query: { recipeid: `${recipe.id}` },
-                }}
-                passHref
+      <Row xs={1} md={3} className="g-4">
+        {popular.map((recipe) => (
+          <Col key={recipe.id}>
+            <Link
+              href={{
+                pathname: "/recipedetails/",
+                query: { recipeid: `${recipe.id}` },
+              }}
+              passHref
+            >
+              <Card
+                className="text-center"
+                // border="light"
+                bg="dark"
+                text="light"
               >
-                <Card
-                  className="text-center"
-                  // border="light"
-                  bg="dark"
-                  text="light"
-                >
-                  <Image
-                    fluid
-                    // bg="dark"
-                    // rounded="true"
-                    thumbnail="true"
-                    variant="top"
-                    src={recipe.image}
-                    alt={recipe.title}
-                  />
-                  <Card.Body>
-                    <Card.Title>{recipe.title}</Card.Title>
-                    <Card.Text></Card.Text>
-                  </Card.Body>
-                </Card>
-              </Link>
-            </Col>
-          ))}
-        </Row>
-      </Container>
+                <Image
+                  fluid
+                  // bg="dark"
+                  rounded="true"
+                  // thumbnail="true"
+                  variant="top"
+                  src={recipe.image}
+                  alt={recipe.title}
+                />
+                <Card.Body>
+                  <Card.Title style={{ fontSize: "1rem" }}>
+                    {recipe.title}
+                  </Card.Title>
+
+                  <Card.Text></Card.Text>
+                </Card.Body>
+              </Card>
+            </Link>
+          </Col>
+        ))}
+      </Row>
     </>
   );
 }

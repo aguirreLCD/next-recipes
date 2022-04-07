@@ -10,7 +10,7 @@ function Footer() {
           // border="light"
           bg="dark"
           // styles={{ height: "5rem" }}
-          text="light"
+          text="danger"
         >
           {/* <Card.Header>Featured</Card.Header> */}
           {/* <Card.Body>
@@ -21,7 +21,9 @@ function Footer() {
         </Card.Text>
             <Button variant="light">Go somewhere</Button>
           </Card.Body> */}
-          <Card.Footer className="text-danger">nextjs-recipes</Card.Footer>
+          <Card.Footer className="text-center" style={{ maxHeight: "100px" }}>
+            nextjs-recipes
+          </Card.Footer>
         </Card>
       </Container>
     </>

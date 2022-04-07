@@ -50,10 +50,15 @@ export default function Nordic() {
     <>
       <Card
         className="text-center"
-        border="dark"
-        bg="danger"
-        // styles={{ height: "5rem" }}
-        text="light"
+        bg="dark"
+        style={{
+          padding: "1rem",
+          margin: "1rem",
+          borderRadius: "25px",
+
+          // backgroundColor: "gray",
+        }}
+        text="danger"
       >
         <Card.Title className="justify-content-md-center">
           Nordic Picks
@@ -71,23 +76,26 @@ export default function Nordic() {
               passHref
             >
               <Card
-                className="text-center"
+                className="text-center "
                 // border="light"
+                // style={{ padding: "0.2rem" }}
                 bg="dark"
                 text="light"
               >
                 <Image
                   fluid
                   // bg="dark"
-                  // rounded="true"
-                  thumbnail="true"
+                  rounded="true"
+                  // thumbnail="true"
                   variant="top"
                   src={recipe.image}
                   alt={recipe.title}
                 />
 
                 <Card.Body>
-                  <Card.Title>{recipe.title}</Card.Title>
+                  <Card.Title style={{ fontSize: "1rem" }}>
+                    {recipe.title}
+                  </Card.Title>
 
                   <Card.Text></Card.Text>
                 </Card.Body>

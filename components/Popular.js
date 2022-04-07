@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { Container, Row, Card, Col } from "react-bootstrap";
+import Image from "react-bootstrap/Image";
 
 import Link from "next/link";
 import styles from "../styles/Category.module.css";
@@ -63,18 +64,23 @@ export default function Popular() {
                 }}
                 passHref
               >
-                <Card className={styles.category}>
-                  <Card.Img
-                    className={styles.category}
-                    layout="fill"
+                <Card
+                  className="text-center"
+                  // border="light"
+                  bg="dark"
+                  text="light"
+                >
+                  <Image
+                    fluid
+                    // bg="dark"
+                    rounded="true"
+                    // thumbnail="true"
                     variant="top"
                     src={recipe.image}
                     alt={recipe.title}
                   />
-                  <Card.Body className={styles.categorycard}>
-                    <Card.Title className={styles.categorytitle}>
-                      {recipe.title}
-                    </Card.Title>
+                  <Card.Body>
+                    <Card.Title>{recipe.title}</Card.Title>
                     <Card.Text></Card.Text>
                   </Card.Body>
                 </Card>

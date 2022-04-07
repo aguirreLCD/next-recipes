@@ -58,9 +58,9 @@ export default function Veggie() {
           </Row>
         </Container>
 
-        <Row xs={1} md={3} className="g-4">
+        <Row xs={1} md={3} className="g-4" bg="dark">
           {veggie.map((recipe) => (
-            <Col key={recipe.id}>
+            <Col key={recipe.id} bg="dark">
               <Link
                 href={{
                   pathname: "/recipedetails/",
@@ -70,14 +70,15 @@ export default function Veggie() {
               >
                 <Card
                   className="text-center"
-                  border="light"
+                  // border="light"
                   bg="dark"
                   text="light"
                 >
                   <Image
                     fluid
-                    // rounded="true"
-                    thumbnail="true"
+                    bg="dark"
+                    rounded="true"
+                    // thumbnail="true"
                     variant="top"
                     src={recipe.image}
                     alt={recipe.title}

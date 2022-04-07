@@ -10,7 +10,7 @@ const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 export default function Nordic() {
   const [nordic, setNordic] = useState([]);
-  console.log(nordic);
+  // console.log(nordic);
 
   const getNordic = async () => {
     const check = localStorage.getItem("nordic");
@@ -30,11 +30,11 @@ export default function Nordic() {
 
         localStorage.setItem("nordic", JSON.stringify(data.results));
 
-        console.log(data);
+        // console.log(data);
 
         setNordic(data.results);
 
-        console.log(data.results);
+        // console.log(data.results);
       }
     }
   };
@@ -43,7 +43,7 @@ export default function Nordic() {
     getNordic();
   }, []);
 
-  console.log(nordic);
+  // console.log(nordic);
 
   return (
     <>

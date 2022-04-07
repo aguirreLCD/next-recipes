@@ -2,35 +2,35 @@ import React, { useState, useEffect } from "react";
 import { Button, Container, Card, Row, Col } from "react-bootstrap";
 import styles from "../styles/Category.module.css";
 
-import Image from "next/image";
 import { useRouter } from "next/router";
+
+import DOMPurify from "dompurify";
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 function RecipeDetails() {
   const router = useRouter();
 
-  console.log(router.query.recipeid);
+  // console.log(router.query.recipeid);
 
   let {
     query: { recipeid },
   } = router;
 
-  console.log(router);
+  // console.log(router);
   //   console.log(router.components);
   const [recipeDetails, setRecipeDetails] = useState([]);
   const [activeTab, setActiveTab] = useState("instructions");
-  const [stepsForInstructions, setStepsForInstructions] = useState({});
+  const [stepsForInstructions, setStepsForInstructions] = useState([]);
 
   const fetchRecipeDetails = async () => {
     const check = localStorage.getItem(`${router.query.recipeid}`);
-    console.log(JSON.parse(check));
+    // console.log(JSON.parse(check));
 
     if (check) {
-      console.log(JSON.parse(check));
+      // console.log(JSON.parse(check));
       // console.log(check);
       setRecipeDetails(JSON.parse(check));
-      setStepsForInstructions(JSON.parse(check));
     } else {
       if (typeof window !== "undefined") {
         const data = await fetch(
@@ -47,12 +47,6 @@ function RecipeDetails() {
         );
 
         setRecipeDetails(detailsData);
-
-        // console.log(JSON.parse(instructions, detailsData.analyzedInstructions));
-        console.log(JSON.stringify(detailsData.analyzedInstructions));
-        setStepsForInstructions(
-          JSON.stringify(detailsData.analyzedInstructions)
-        );
       }
     }
   };
@@ -62,20 +56,53 @@ function RecipeDetails() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(JSON.stringify(recipeDetails.analyzedInstructions));
+  // const analyzedInstructions = JSON.stringify(
+  //   { stepsForInstructions: stepsForInstructions.analyzedInstructions },
+  //   { stepsForInstructions },
+  //   "\t"
+  // );
+
+  // console.log(analyzedInstructions);
+  // setStepsForInstructions(analyzedInstructions);
   // console.log(stepsForInstructions);
-  console.log(JSON.stringify(stepsForInstructions.analyzedInstructions));
+
+  // console.log(analyzedInstructions);
+
+  // const analyzedInstructions = JSON.stringify(
+  //   { stepsForInstructions: stepsForInstructions.analyzedInstructions },
+  //   { stepsForInstructions },
+  //   "\t"
+  // );
+
+  // setStepsForInstructions(analyzedInstructions);
+  // console.log(stepsForInstructions);
+
+  // console.log(analyzedInstructions);
+
+  // console.log(analyzedInstructions[0].steps[0].step);
+
+  // console.log(JSON.stringify(recipeDetails.analyzedInstructions));
+  // console.log(stepsForInstructions);
+  // console.log(JSON.stringify(stepsForInstructions.analyzedInstructions));
+
+  // console.log(
+  //   JSON.stringify(
+  //     { stepsForInstructions: stepsForInstructions.analyzedInstructions },
+  //     { stepsForInstructions },
+  //     "\t"
+  //   )
+  // );
 
   return (
     <>
       {/* <div>{JSON.stringify(stepsForInstructions.analyzedInstructions)}</div> */}
-      {/* <div>{JSON.stringify({ stepsForInstructions })}</div> */}
+      {/* <div>{JSON.stringify({ stepsForInstructions }, "\t")}</div> */}
       {/* <div>{JSON.stringify(stepsForInstructions.analyzedInstructions)}</div> */}
       {/* <div>
         {JSON.stringify(
           { stepsForInstructions: stepsForInstructions.analyzedInstructions },
-          null,
-          ""
+          { stepsForInstructions },
+          "\t"
         )}
       </div> */}
 
@@ -86,7 +113,7 @@ function RecipeDetails() {
       <Container>
         <h2 className={styles.title}>{recipeDetails.title}</h2>
 
-        <Row xs={1} md={3} className="g-4">
+        <Row xs={1} md={1} className="g-4">
           <Col key={recipeDetails.id}>
             <Card className={styles.recipedetails}>
               <Card.Img
@@ -119,12 +146,24 @@ function RecipeDetails() {
 
                 {activeTab === "instructions" && (
                   <Card.Text>
-                    Instructions:
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(recipeDetails.instructions),
+                      }}
+                    ></p>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(recipeDetails.summary),
+                      }}
+                    ></p>
+
+                    {/* Instructions:
                     {JSON.stringify(recipeDetails?.instructions)}
                     Sumary:
-                    {JSON.stringify(recipeDetails?.summary)}
+                    {JSON.stringify(recipeDetails?.summary)} */}
                   </Card.Text>
                 )}
+
                 {activeTab === "ingredients" && (
                   <ul>
                     {recipeDetails.extendedIngredients.map((ingredient) => (

@@ -29,9 +29,9 @@ export default function Home() {
           <Veggie></Veggie>
         </Container>
 
-        <Container>
+        {/* <Container>
           <Popular></Popular>
-        </Container>
+        </Container> */}
 
         <Container>
           <Nordic></Nordic>

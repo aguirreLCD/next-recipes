@@ -6,19 +6,20 @@ import { Container, Row, Card, Col } from "react-bootstrap";
 import Link from "next/link";
 
 import styles from "../styles/Category.module.css";
+import Image from "react-bootstrap/Image";
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 export default function Veggie() {
   const [veggie, setVeggie] = useState([]);
-  console.log(veggie);
+  // console.log(veggie);
 
   const getVeggie = async () => {
     const check = localStorage.getItem("veggie");
-    console.log(JSON.parse(check));
+    // console.log(JSON.parse(check));
 
     if (check) {
-      console.log(JSON.parse(check));
+      // console.log(JSON.parse(check));
       // console.log(check);
       setVeggie(JSON.parse(check));
     } else {
@@ -31,11 +32,11 @@ export default function Veggie() {
 
         localStorage.setItem("veggie", JSON.stringify(data.recipes));
 
-        console.log(data);
+        // console.log(data);
 
         setVeggie(data.recipes);
 
-        console.log(data.recipes);
+        // console.log(data.recipes);
       }
     }
   };
@@ -44,7 +45,7 @@ export default function Veggie() {
     getVeggie();
   }, []);
 
-  console.log(veggie);
+  // console.log(veggie);
 
   return (
     <>
@@ -67,18 +68,22 @@ export default function Veggie() {
                 }}
                 passHref
               >
-                <Card className={styles.category}>
-                  <Card.Img
-                    className={styles.category}
-                    layout="fill"
+                <Card
+                  className="text-center"
+                  border="light"
+                  bg="dark"
+                  text="light"
+                >
+                  <Image
+                    fluid
+                    // rounded="true"
+                    thumbnail="true"
                     variant="top"
                     src={recipe.image}
                     alt={recipe.title}
                   />
-                  <Card.Body className={styles.categorycard}>
-                    <Card.Title className={styles.categorytitle}>
-                      {recipe.title}
-                    </Card.Title>
+                  <Card.Body>
+                    <Card.Title>{recipe.title}</Card.Title>
 
                     <Card.Text></Card.Text>
                   </Card.Body>

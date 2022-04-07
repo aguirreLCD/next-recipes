@@ -9,14 +9,14 @@ const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 export default function Popular() {
   const [popular, setPopular] = useState([]);
-  console.log(popular);
+  // console.log(popular);
 
   const getPopular = async () => {
     const check = localStorage.getItem("popular");
-    console.log(JSON.parse(check));
+    // console.log(JSON.parse(check));
 
     if (check) {
-      console.log(JSON.parse(check));
+      // console.log(JSON.parse(check));
       // console.log(check);
       setPopular(JSON.parse(check));
     } else {
@@ -29,11 +29,11 @@ export default function Popular() {
 
         localStorage.setItem("popular", JSON.stringify(data.recipes));
 
-        console.log(data);
+        // console.log(data);
 
         setPopular(data.recipes);
 
-        console.log(data.recipes);
+        // console.log(data.recipes);
       }
     }
   };

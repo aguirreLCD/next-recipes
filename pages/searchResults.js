@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import Image from "react-bootstrap/Image";
 import styles from "../styles/Category.module.css";
 
 import { Container, Row, Card, Col } from "react-bootstrap";
@@ -46,13 +47,11 @@ function SearchResults() {
   return (
     <>
       <Container fluid>
-        <Container fluid>
-          <Row className="justify-content-md-center">
-            <Col md="auto">
-              <h2 className={styles.title}>{keywordToSearch} recipes</h2>
-            </Col>
-          </Row>
-        </Container>
+        <Row className="justify-content-md-center">
+          <Col md="auto">
+            <h2 className={styles.title}>{keywordToSearch} recipes</h2>
+          </Col>
+        </Row>
 
         <Row xs={1} md={3} className="g-4">
           {searchedRecipes.map((recipe) => (
@@ -64,10 +63,17 @@ function SearchResults() {
                 }}
                 passHref
               >
-                <Card className={styles.category}>
-                  <Card.Img
-                    className={styles.category}
-                    layout="fill"
+                <Card
+                  className="text-center"
+                  // border="light"
+                  bg="dark"
+                  text="light"
+                >
+                  <Image
+                    fluid
+                    // bg="dark"
+                    // rounded="true"
+                    thumbnail="true"
                     variant="top"
                     src={recipe.image}
                     alt={recipe.title}

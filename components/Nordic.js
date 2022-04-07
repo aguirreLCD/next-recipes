@@ -48,52 +48,54 @@ export default function Nordic() {
 
   return (
     <>
-      <Container fluid>
-        <Container fluid>
-          <Row className="justify-content-md-center">
-            <Col md="auto">
-              <h2 className={styles.title}>Nordic Picks</h2>
-            </Col>
-          </Row>
-        </Container>
+      <Card
+        className="text-center"
+        border="dark"
+        bg="danger"
+        // styles={{ height: "5rem" }}
+        text="light"
+      >
+        <Card.Title className="justify-content-md-center">
+          Nordic Picks
+        </Card.Title>
+      </Card>
 
-        <Row xs={1} md={3} className="g-4">
-          {nordic.map((recipe) => (
-            <Col key={recipe.id}>
-              <Link
-                href={{
-                  pathname: "/recipedetails/",
-                  query: { recipeid: `${recipe.id}` },
-                }}
-                passHref
+      <Row xs={1} md={3} className="g-4">
+        {nordic.map((recipe) => (
+          <Col key={recipe.id}>
+            <Link
+              href={{
+                pathname: "/recipedetails/",
+                query: { recipeid: `${recipe.id}` },
+              }}
+              passHref
+            >
+              <Card
+                className="text-center"
+                // border="light"
+                bg="dark"
+                text="light"
               >
-                <Card
-                  className="text-center"
-                  // border="light"
-                  bg="dark"
-                  text="light"
-                >
-                  <Image
-                    fluid
-                    // bg="dark"
-                    rounded="true"
-                    // thumbnail="true"
-                    variant="top"
-                    src={recipe.image}
-                    alt={recipe.title}
-                  />
+                <Image
+                  fluid
+                  // bg="dark"
+                  // rounded="true"
+                  thumbnail="true"
+                  variant="top"
+                  src={recipe.image}
+                  alt={recipe.title}
+                />
 
-                  <Card.Body>
-                    <Card.Title>{recipe.title}</Card.Title>
+                <Card.Body>
+                  <Card.Title>{recipe.title}</Card.Title>
 
-                    <Card.Text></Card.Text>
-                  </Card.Body>
-                </Card>
-              </Link>
-            </Col>
-          ))}
-        </Row>
-      </Container>
+                  <Card.Text></Card.Text>
+                </Card.Body>
+              </Card>
+            </Link>
+          </Col>
+        ))}
+      </Row>
     </>
   );
 }

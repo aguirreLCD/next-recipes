@@ -12,69 +12,67 @@ import { Container, Stack } from "react-bootstrap";
 function Category() {
   return (
     <>
-      <Container fluid="md">
-        <Stack direction="horizontal" gap={2} className="col-md-5 mx-auto">
-          <div>
-            <Link
-              href={{
-                pathname: "/[slug]",
-                query: { slug: "Italian" },
-              }}
-              passHref
-            >
-              <div className={styles.card}>
-                <FaPizzaSlice />
-                <a>Italian</a>
-              </div>
-            </Link>
-          </div>
+      <Stack direction="horizontal" gap={1} className="md">
+        <div className="mx-auto">
+          <Link
+            href={{
+              pathname: "/[slug]",
+              query: { slug: "Italian" },
+            }}
+            passHref
+          >
+            <div className={styles.card}>
+              <FaPizzaSlice />
+              <a>Italian</a>
+            </div>
+          </Link>
+        </div>
 
-          <div>
-            <Link
-              href={{
-                pathname: "/[slug]",
-                query: { slug: "American" },
-              }}
-              passHref
-            >
-              <div className={styles.card}>
-                <FaHamburger />
-                <a>American</a>
-              </div>
-            </Link>
-          </div>
+        <div className="mx-auto">
+          <Link
+            href={{
+              pathname: "/[slug]",
+              query: { slug: "American" },
+            }}
+            passHref
+          >
+            <div className={styles.card}>
+              <FaHamburger />
+              <a>American</a>
+            </div>
+          </Link>
+        </div>
 
-          <div>
-            <Link
-              href={{
-                pathname: "/[slug]",
-                query: { slug: "Thai" },
-              }}
-              passHref
-            >
-              <div className={styles.card}>
-                <GiNoodles />
-                <a>Thai</a>
-              </div>
-            </Link>
-          </div>
+        <div className="mx-auto">
+          <Link
+            href={{
+              pathname: "/[slug]",
+              query: { slug: "Thai" },
+            }}
+            passHref
+          >
+            <div className={styles.card}>
+              <GiNoodles />
+              <a>Thai</a>
+            </div>
+          </Link>
+        </div>
 
-          <div>
-            <Link
-              href={{
-                pathname: "/[slug]",
-                query: { slug: "Japanese" },
-              }}
-              passHref
-            >
-              <div className={styles.card}>
-                <GiChopsticks />
-                <a>Japanese</a>
-              </div>
-            </Link>
-          </div>
-        </Stack>
-      </Container>
+        <div className="mx-auto">
+          <Link
+            href={{
+              pathname: "/[slug]",
+              query: { slug: "Japanese" },
+            }}
+            passHref
+          >
+            <div className={styles.card}>
+              <GiChopsticks />
+              <a>Japanese</a>
+            </div>
+          </Link>
+        </div>
+      </Stack>
     </>
   );
 }

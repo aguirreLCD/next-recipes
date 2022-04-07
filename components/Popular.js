@@ -46,13 +46,23 @@ export default function Popular() {
   return (
     <>
       <Container fluid>
-        <Container fluid>
-          <Row className="justify-content-md-center">
-            <Col md="auto">
-              <h2 className={styles.title}>Popular Picks</h2>
-            </Col>
-          </Row>
-        </Container>
+        {/* <Row className="justify-content-md-center">
+          <Col md="auto">
+            <h2 className={styles.title}>Popular Picks</h2>
+          </Col>
+        </Row> */}
+
+        <Card
+          className="text-center"
+          // border="danger"
+          bg="dark"
+          // styles={{ height: "5rem" }}
+          text="danger"
+        >
+          <Card.Title className="justify-content-md-center">
+            Popular Picks
+          </Card.Title>
+        </Card>
 
         <Row xs={1} md={3} className="g-4">
           {popular.map((recipe) => (
@@ -73,8 +83,8 @@ export default function Popular() {
                   <Image
                     fluid
                     // bg="dark"
-                    rounded="true"
-                    // thumbnail="true"
+                    // rounded="true"
+                    thumbnail="true"
                     variant="top"
                     src={recipe.image}
                     alt={recipe.title}

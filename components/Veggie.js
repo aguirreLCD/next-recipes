@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 import { Container, Row, Card, Col } from "react-bootstrap";
-
+import Accordion from "react-bootstrap/Accordion";
 import Link from "next/link";
 
 import styles from "../styles/Category.module.css";
@@ -50,13 +50,23 @@ export default function Veggie() {
   return (
     <>
       <Container fluid>
-        <Container fluid>
-          <Row className="justify-content-md-center">
-            <Col md="auto">
-              <h2 className={styles.title}>Veggie Picks</h2>
-            </Col>
-          </Row>
-        </Container>
+        {/* <Row className="justify-content-md-center">
+          <Col md="auto">
+            <h2 className={styles.title}>Veggie Picks</h2>
+          </Col>
+        </Row> */}
+
+        <Card
+          className="text-center"
+          // border="danger"
+          bg="dark"
+          // styles={{ height: "5rem" }}
+          text="danger"
+        >
+          <Card.Title className="justify-content-md-center">
+            Veggie Picks
+          </Card.Title>
+        </Card>
 
         <Row xs={1} md={3} className="g-4" bg="dark">
           {veggie.map((recipe) => (
@@ -70,7 +80,7 @@ export default function Veggie() {
               >
                 <Card
                   className="text-center"
-                  // border="light"
+                  border="light"
                   bg="dark"
                   text="light"
                 >

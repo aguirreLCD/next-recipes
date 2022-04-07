@@ -12,7 +12,7 @@ import Nordic from "../components/Nordic";
 export default function Home() {
   return (
     <>
-      <Container fluid>
+      <Container fluid bg="dark">
         <Container fluid>
           <Head>
             <title>Recipes Next App</title>

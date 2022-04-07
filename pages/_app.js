@@ -5,16 +5,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../styles/Home.module.css";
 
 import SSRProvider from "react-bootstrap/SSRProvider";
-import Layout from "../components/Layout";
+import Footer from "../components/Footer";
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <div className={styles.container}>
         <SSRProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <NavRecipe />
+
+          <Component {...pageProps} />
+          <Footer />
         </SSRProvider>
       </div>
     </>

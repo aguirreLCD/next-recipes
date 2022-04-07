@@ -39,6 +39,7 @@ function RecipeDetails() {
 
         const detailsData = await data.json();
 
+        DOMPurify.sanitize(detailsData);
         console.log(detailsData);
 
         localStorage.setItem(
@@ -148,12 +149,12 @@ function RecipeDetails() {
                   <Card.Text>
                     <p
                       dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(recipeDetails.instructions),
+                        __html: recipeDetails.instructions,
                       }}
                     ></p>
                     <p
                       dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(recipeDetails.summary),
+                        __html: recipeDetails.summary,
                       }}
                     ></p>
 

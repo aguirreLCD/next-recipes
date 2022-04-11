@@ -25,6 +25,10 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+.yarnrc
+.yarn/releases
+.eslintrc.json
+
 # local env files
 .env*.local
 

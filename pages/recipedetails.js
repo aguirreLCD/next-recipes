@@ -146,18 +146,11 @@ function RecipeDetails() {
                 </Button>
 
                 {activeTab === "instructions" && (
-                  <Card.Text>
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: recipeDetails.instructions,
-                      }}
-                    ></p>
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: recipeDetails.summary,
-                      }}
-                    ></p>
-
+                  <Card.Text
+                    dangerouslySetInnerHTML={{
+                      __html: recipeDetails.instructions,
+                    }}
+                  >
                     {/* Instructions:
                     {JSON.stringify(recipeDetails?.instructions)}
                     Sumary:
@@ -172,6 +165,61 @@ function RecipeDetails() {
                     ))}
                   </ul>
                 )}
+
+                {activeTab === "summary" && (
+                  <Card.Text
+                    dangerouslySetInnerHTML={{
+                      __html: recipeDetails.summary,
+                    }}
+                  ></Card.Text>
+                )}
+
+                {activeTab === "diets" && (
+                  <Card.Text
+                    dangerouslySetInnerHTML={{
+                      __html: recipeDetails.diets,
+                    }}
+                  ></Card.Text>
+                )}
+
+                {activeTab === "dishTypes" && (
+                  <Card.Text
+                    dangerouslySetInnerHTML={{
+                      __html: recipeDetails.dishTypes,
+                    }}
+                  ></Card.Text>
+                )}
+              </Card.Body>
+            </Card>
+
+            <Card className={styles.recipedetails}>
+              <Card.Body>
+                <Button
+                  variant="danger"
+                  size="sm"
+                  className={activeTab === "summary" ? "active" : ""}
+                  onClick={() => setActiveTab("summary")}
+                >
+                  Sumary
+                </Button>
+
+                <Button
+                  variant="dark"
+                  size="sm"
+                  className={activeTab === "diets" ? "active" : ""}
+                  onClick={() => setActiveTab("diets")}
+                >
+                  Diets
+                </Button>
+
+                <Button
+                  variant="success"
+                  size="sm"
+                  className={activeTab === "dishTypes" ? "active" : ""}
+                  onClick={() => setActiveTab("dishTypes")}
+                >
+                  Dish Types
+                </Button>
               </Card.Body>
             </Card>
           </Col>
